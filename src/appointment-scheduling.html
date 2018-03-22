@@ -1,0 +1,109 @@
+<link rel="import" href="../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-iconset-svg/iron-iconset-svg.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/notification-icons.html">
+<link rel="import" href="../bower_components/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-toolbar/app-toolbar.html">
+
+
+<dom-module id="appointment-scheduling">
+  <template>
+    <style include ="shared-styles iron-flex">
+	:host {
+	  display: inline-block;
+	  padding: 10px;
+	  text-align: center;
+	}
+     </style>
+
+  <app-location
+	route="{{route}}"
+	url-space-regex="^[[rootPath]]">
+  </app-location>
+
+  <app-route
+	route="{{route}}"
+	pattern="[[rootPath]]:page"
+	data="{{routeData}}"
+	tail="{{subroute}}">
+  </app-route>
+
+ <div class="box">
+  <app-toolbar>
+   <a href="[[rootPath]]openmrs-home">
+    <paper-icon-button style="color:#5B57A6" icon="icons:home"></paper-icon-button>
+   </a>
+    <iron-icon icon="icons:chevron-right"></iron-icon>
+    <a>Appointment Scheduling</a>
+  </app-toolbar> </div>
+
+  <div class="box">
+    <div class="layout horizontal wrap">
+     <div class="card">
+      <a href="[[rootPath]]service-types" tabindex="-1">
+	<paper-icon-button style="width:90px; height:90px; color:#5B57A6" sizing="contain" icon="notification:event-note"></paper-icon-button>
+     <div name="service">
+	<t1>Manage Service Types</t1>
+     </div>
+      </a>
+    </div>
+
+    <div class="card">
+      <a href="[[rootPath]]provider-schedules" tabindex="-1">
+	<paper-icon-button style="width:90px; height:90px; color:#5B57A6" sizing="contain" icon="notification:event-note"></paper-icon-button>
+     <div name="providers">
+	<t1>Manage Provider Schedules</t1>
+     </div>
+      </a>
+    </div>
+
+    <div class="card">
+      <a href="[[rootPath]]manage-appointments" tabindex="-1">
+	<paper-icon-button style="width:75px; height:75px; color:#5B57A6" sizing="contain" icon="notification:event-note"></paper-icon-button>
+      <div name="manage">
+	<t1>Manage Appointments</t1>
+      </div>
+       </a>
+     </div>
+
+    <div class="card">
+      <a href="[[rootPath]]daily-appointments" tabindex="-1">
+	<paper-icon-button style="width:75px; height:75px; color:#5B57A6" sizing="contain" icon="notification:event-note"></paper-icon-button>
+      <div name="daily">
+	<t1>Daily Appointments</t1>
+      </div>
+       </a>
+      </div>
+
+     <div class="card">
+      <a href="[[rootPath]]appointment-requests" tabindex="-1">
+	<paper-icon-button style="width:75px; height:75px; color:#5B57A6" sizing="contain" icon="notification:event-note"></paper-icon-button>
+      <div name="requests">
+	<t1>Appointment Requests</t1>
+      </div>
+	</a>
+      </div>
+   </div>
+  </div>
+ </template>
+
+<script>
+    class ApptSchedule extends Polymer.Element {
+	static get is() {return 'appointment-scheduling';}
+  }
+  window.customElements.define(ApptSchedule.is, ApptSchedule);
+</script>
+</dom-module>

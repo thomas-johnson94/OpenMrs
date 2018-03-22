@@ -2,14 +2,24 @@
   "name": "polymer-starter-kit",
   "license": "BSD-3-Clause",
   "devDependencies": {
+    "browser-sync": "^2.23.6",
     "eslint": "^3.19.0",
     "eslint-config-google": "^0.7.0",
-    "eslint-plugin-html": "^2.0.0"
+    "eslint-plugin-html": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-polymer-build-utils": "^1.5.0"
   },
   "scripts": {
     "lint": "npm run lint:javascript && polymer lint",
     "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
     "test": "polymer test",
-    "test:integration": "polymer build # test that psk builds without error with the CLI"
+    "test:integration": "polymer build # test that psk builds without error with the CLI",
+    "gulp": "./node_modules/gulp/bin/gulp.js"
+  },
+  "dependencies": {
+    "gulp-cli": "^2.0.1",
+    "gulp-update": "0.0.2",
+    "polymer-bootstrap": "0.0.1",
+    "webcomponents.js": "^0.7.24"
   }
 }

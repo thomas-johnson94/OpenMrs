@@ -9,17 +9,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 
 <!-- shared styles for all views -->
 <dom-module id="shared-styles">
   <template>
-    <style>
+    <style include="iron flex iron-flex-alignment">
       .card {
-        margin: 24px;
+	width: 140px;
+	height: 135px;
+        margin: 15px;
         padding: 16px;
         color: #757575;
         border-radius: 5px;
-        background-color: #fff;
+        background: linear-gradient(to bottom, #ffffff 0%, #C0C0C0 100%);
         box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
       }
 
@@ -50,6 +53,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: #212121;
         font-size: 22px;
       }
-    </style>
+      t1 {
+	font-size: 15px;
+	color: #5B57A6;
+      }
+    .box {
+	margin: 0px;
+	padding: 20px;
+	color: black;
+	border-radius: 5px;
+	background-color: #fff;
+	}
+     .pseudo-head {
+	height: 45px;
+	margin: 0px;
+	padding: 0px;
+	color: black;
+	border-radius: 5px;
+	background-color: #757575;
+	}
+     .box2 {
+	margin: 24px;
+	padding: 16px;
+	color: #757575;
+	border-radius: 5px;
+	background-color: #fff;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);
+      }
+   </style>
   </template>
 </dom-module>

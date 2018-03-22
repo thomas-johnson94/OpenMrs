@@ -4,8 +4,16 @@
   "fragments": [
     "src/home-quotes.html",
     "src/register-login.html",
+    "src/provider-schedules.html",
     "src/secret-quotes.html",
-    "src/not-found.html"
+    "src/not-found.html",
+    "src/openmrs-home.html",
+    "src/appointment-scheduling.html",
+    "src/configure-metadata.html",
+    "src/patient-register.html",
+    "src/man-concepts.html",
+    "src/patient-record.html",
+    "src/active-visits.html"
   ],
   "sources": [
     "src/**/*",

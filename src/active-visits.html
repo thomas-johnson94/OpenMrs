@@ -1,0 +1,28 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-iconset-svg/iron-iconset-svg.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="active-visits">
+  <template>
+    <style include="shared-styles">
+      :host {
+	display: block;
+	padding: 10px;
+      }
+    </style>
+
+    <div class="card">
+	<h1>Active Visits</h1>
+    </div>
+   </template>
+
+ <script>
+    class ActiveVisits extends Polymer.Element {
+	static get is() {return 'active-visits'; }
+   }
+  window.customElements.define(ActiveVisits.is, ActiveVisits);
+  </script>
+</dom-module>

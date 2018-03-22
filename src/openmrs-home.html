@@ -1,0 +1,139 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-iconset-svg/iron-iconset-svg.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/notification-icons.html">
+<link rel="import" href="../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+
+<link rel="lazy-import" href="home-quotes.html">
+<link rel="lazy-import" href="patient-record.html">
+<link rel="lazy-import" href="active-visits.html">
+<link rel="lazy-import" href="appointment-scheduling.html">
+<link rel="lazy-import" href="configure-metadata.html">
+
+
+<dom-module id="openmrs-home">
+  <template>
+    <style include ="shared-styles iron-flex">
+	:host {
+	  display: inline-block;
+	  padding: 10px;
+	  text-align: center;
+	}
+    </style>
+  <app-location
+	route="{{route}}"
+	url-space-regex="^[[rootPath]]">
+  </app-location>
+
+  <app-route
+	route="{{route}}"
+	pattern="[[rootPath]]:page"
+	data="{{routeData}}"
+	tail="{{subroute}}">
+  </app-route>
+
+
+  <div class="box">
+   <div class="layout horizontal wrap">   
+    <div class="card">
+     <a href="[[rootPath]]patient-record" tabindex="-1">
+	<paper-icon-button style="width:75px; height:75px; color:#5B57A6" sizing="contain" icon="icons:search"></paper-icon-button>
+      <div name="search">
+       <t1>Find Patient Record</t1>
+      </div>
+      </a>
+    </div>
+    <div class="card">
+     <a href="[[rootPath]]active-visits" tabindex="-1">
+	<paper-icon-button style="width:75px; height:75px; color:#5B57A6" sizing="contain" icon="notification:event-available"></paper-icon-button>
+       <div name="visits">
+	<t1>Active Visits</t1>
+      </div>
+      </a>
+   </div>
+
+   <div class="card">
+      <a href="[[rootPath]]appointment-scheduling" tabindex="-1">
+	<paper-icon-button style="width:75px; height:75px; color:#5B57A6" sizing="contain" icon="notification:event-note"></paper-icon-button>
+     <div name="scheduling">
+	<t1>Appointment Scheduling</t1>
+    </div>
+      </a>
+     </div>
+ 
+     <div class="card">
+      <a href="[[rootPath]]patient-register" tabindex="-1">
+	<paper-icon-button style="width:75px; height:75px; color:#5B57A6" sizing="contain" icon="social:group-add"></paper-icon-button>
+      <div name="add">
+	<t1>Register a patient</t1>
+     </div>
+      </a>
+      </div>
+
+     <div class="card">
+      <a href="https://www.polymer-project.org" tabindex="-1">
+	<paper-icon-button style="width:75px; height:75px; color:#5B57A6" sizing="contain" icon="icons:favorite"></paper-icon-button>
+        <div name="vitals">
+	<t1>Capture Vitals</t1>
+       </div>
+      </a>
+     </div>
+      
+     <div class="card">
+      <a href="https://pcgamer.com" tabindex="-1">
+	<paper-icon-button style="width:75px; height:75px; color:#5B57A6" sizing="contain" icon="icons:list"></paper-icon-button>
+      <div name="report">
+       <t1>Reports<t1>
+      </div>
+      </a>
+     </div>
+
+     <div class="card">
+      <a href="https://polymer-project.org" tabindex="-1">
+	<paper-icon-button style="width:75px; height:75px; color:#5B57A6" sizing="contain" icon="hardware:tv"></paper-icon-button>
+     <div name="data">
+	<t1>Data Management<t1>
+    </div>
+      </a>
+     </div>  
+   
+     <div class="card">
+      <a href="[[rootPath]]configure-metadata" tabindex="-1">
+	<paper-icon-button style="width:75px; height:75px; color:#5B57A6" sizing="cover" icon="icons:trending-up"></paper-icon-button>
+     <div name="metadata">
+	<t1>Configure MetaData</t1>
+    </div>
+      </a>
+     </div>
+     <div class="card">
+      <a href="https:www.polymer-project.org" tabindex="-1">
+	<paper-icon-button style="width:75px; height:75px; color:#5B57A6" sizing="contain" icon="icons:settings"></paper-icon-button>
+     <div name="settings">
+	<t1>System Administration</t1>
+    </div>
+      </a>
+     </div>
+    </div>
+   </div>
+  </template>
+
+
+<script>
+  class OpenMrsHome extends Polymer.Element {
+	static get is() {return 'openmrs-home';}
+ }
+  window.customElements.define(OpenMrsHome.is, OpenMrsHome);
+</script>
+</dom-module>

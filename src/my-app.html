@@ -22,12 +22,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/brum-global-variable/brum-global-variable.html">
 <link rel="import" href="../bower_components/iron-localstorage/iron-localstorage.html">
-<link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="top-icons.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../bower_components/iron-icons/maps-icons.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu-light.html">
+<script src="../bower_components/web-animations-js/web-animations.min.js"></script>
+<script src="../bower_components/web-animations-js/web-animations-next-lite.min.js"></script>
 
+
+<link rel="lazy-import" href="provider-schedules">
+<link rel="lazy-import" href="openmrs-home.html">
 <link rel="lazy-import" href="home-quotes.html">
 <link rel="lazy-import" href="register-login.html">
 <link rel="lazy-import" href="secret-quotes.html">
 <link rel="lazy-import" href="not-found.html">
+<link rel="lazy-import" href="appointment-scheduling.html">
+<link rel="lazy-import" href="patient-register.html">
+<link rel="lazy-import" href="configure-metadata.html">
+<link rel="lazy-import" href="concept-classes.html">
+<link rel="lazy-import" href="man-concepts.html">
+<link rel="lazy-import" href="patient-record.html">
 
 <link rel="import" href="log-out.html">
 
@@ -35,10 +54,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style>
       :host {
-        --app-primary-color: #4285f4;
+        --app-primary-color: #009384;
         --app-secondary-color: black;
 
-        display: block;
+	 display: block;
       }
 
       app-drawer-layout:not([narrow]) [drawer-toggle] {
@@ -80,6 +99,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	display: inline-block;
 	padding-right: 6px;
 	}
+      paper-dropdown-menu-light {
+	--primary-text-color: #fff;
+	width: 150px;
+	font-size: 13px;
+	display: inline-block;
+	padding: 10px;
+	text-align: right;	
+	}
+      paper-listbox {
+	--primary-text-color: black;
+      }
     </style>
 
     <app-location
@@ -108,6 +138,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	  <div name="secret-quotes" hidden$="[[!storedUser.loggedin]]">
 	    <a href="[[rootPath]]secret-quotes">Secrets</a>
 	  </div>
+	  <div name="openmrs-home">
+	    <a href="[[rootPath]]openmrs-home">OpenMrs Home</a>
+	  </div>
         </iron-selector>
       </app-drawer>
 
@@ -116,15 +149,40 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <app-header slot="header" condenses reveals effects="waterfall">
           <app-toolbar>
-            <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-            <div main-title>My App</div>
-	    <a name="register-login" href="[[rootPath]]register-login" hidden$="[[storedUser.loggedin]]">Log in</a>
+            <paper-icon-button icon="icons:menu" drawer-toggle></paper-icon-button>
+	    <iron-image style="width:100px; height:100px;" sizing="contain" src="https://issues.openmrs.org/secure/attachment/33513/openmrs-logo.png"></iron-image>
+	    
+	    <div main-title> </div>
 	    <div hidden$="[[!storedUser.loggedin]]">
-		<span class="greeting">Hi [[storedUser.name]]!</span>
+	    <iron-icon style="width:30px; height:24px;" sizing="contain" icon="social:person"></iron-icon>
+	    </div>
+	    <div hidden$="[[!storedUser.loggedin]]">
+	        <span class="greeting">[[storedUser.name]]</span>
+	    </div>
+	    <div hidden$="[[!storedUser.loggedin]]">
+	    <iron-icon style="width:30px; height:24px;" sizing="contain" icon="maps:place"></iron-icon>
+	    </div>
+	    <div hidden$="[[!storedUser.loggedin]]">
+	    <paper-dropdown-menu-light>
+	     <paper-listbox slot="dropdown-content" selected="1">
+	      <paper-item>Inpatient Ward</paper-item>
+	      <paper-item>Isolation Ward</paper-item>
+	      <paper-item>Laboratory</paper-item>
+	      <paper-item>Outpatient Clinic</paper-item>
+	      <paper-item>Pharmacy</paper-item>
+	      <paper-item>Registration Desk</paper-item>
+	     </paper-listbox>
+	    </paper-dropdown-menu-light>
+	    </div>
+	   <a name="register-login" href="[[rootPath]]register-login" hidden$="[[storedUser.loggedin]]">Log in</a>
+	    <div hidden$="[[!storedUser.loggedin]]">
 		<log-out stored-user="{{storedUser}}" link></log-out>
 	    </div>
+	    <iron-icon style="width:30px; height:24px;" sizing="contain" icon="icons:exit-to-app"></iron-icon>
           </app-toolbar>
-        </app-header>
+	</app-header>
+	</app-header>
+
 
         <iron-pages
             selected="[[page]]"
@@ -135,7 +193,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <register-login name="register-login"></register-login>
           <secret-quotes name="secret-quotes"></secret-quotes>
           <not-found name="not-found"></not-found>
-        </iron-pages>
+	  <openmrs-home name="openmrs-home"></openmrs-home>
+	  <patient-record name="patient-record"></patient-record>
+	  <active-visits name="active-visits"></active-visits>
+	  <appointment-scheduling name="appointment-scheduling"></appointment-scheduling>
+          <patient-register name="patient-register"></patient-register>
+	  <configure-metadata name="configure-metadata"></configure-metadata>
+          <concept-classes name="concept-classes"></concept-classes> 
+	  <man-concepts name="man-concepts"></man-concepts>
+	  <provider-schedules name="provider-schedules"></provider-schedules>
+       </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
   </template>
