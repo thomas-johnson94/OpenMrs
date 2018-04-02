@@ -16,7 +16,7 @@
 <dom-module id="array-test">
  <template>
 
-   <vaadin-grid page-size="10" aria-label="Manage Service Types" items="{{services}}">
+   <vaadin-grid page-size="10" aria-label="Manage Service Types" items="{{services}}" filter="{{computeFilter(name)}}">
      <vaadin-grid-column>
    	 <template class="header">Name</template>
    	 <template>[[item.name]]</template>
@@ -96,10 +96,18 @@
 	}
 	_push() {
 	  this.push('services', {name: 'Gynecology', duration: '20', description: []});
-    this._sort();
 	}
-  _sort() {
-    name.sort('services');
+  computeFilter(string) {
+    if (!string) {
+      return null;
+    }
+    else {
+      string = string.toLowerCase();
+      return function(services) {
+        var name = services.name.toLowerCase();
+        return (first.indexOf(string) != -1);
+      };
+    }
   }
 }
 
