@@ -11,3 +11,15 @@ gulp.task('serve', function() {
 
     gulp.watch('cnapp/*.html').on('change', browserSync.reload);
 });
+
+gulp.task('server', function() {
+  
+  nodemon({
+	script: './nodejs-jwt-authentication-sample/server.js',
+
+	ext: 'js'
+	}).on('restart', () => {
+	gulp.src('server.js')
+	 .pipe(notify('Running the start tasks and stuff'));
+	});
+});

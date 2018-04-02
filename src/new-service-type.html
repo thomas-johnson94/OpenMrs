@@ -1,0 +1,100 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html"
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+
+<dom-module id="new-service-type">
+ <template>
+  <style include = "shared-styles iron-flex iron-flex-alignment">
+	:host {
+	  --app-primary-color: #009384;
+	  --app-secondary-color: black;
+	
+	display: block;
+	}
+	app-toolbar {
+	  color: #757575;
+	  height: 30px;
+	}
+	paper-button {
+	  font-size: 12px;
+	}
+	.flex {
+	@apply --layout-vertical;
+	}
+	.flex2 {
+	@apply --layout-horizontal;
+	@apply --layout-justified;
+	}
+  </style>
+
+<app-location
+	route="{{route}}"
+	url-space-regex="^[[rootPath]]">
+</app-location>
+
+<app-route
+	route="{{route}}"
+	pattern="[[rootPath]]:page"
+	data="{{routeData}}"
+	tail="{{subroute}}">
+</app-route>
+
+<app-toolbar>
+  <a href="[[rootPath]]openmrs-home">
+   <paper-icon-button style="color:#5B57A6" icon="icons:home"></paper-icon-button>
+  </a>
+   <iron-icon icon="icons:chevron-right"></iron-icon>
+  <a href="[[rootPath]]service-types">Manage Service Types</a>
+   <iron-icon icon="icons:chevron-right"></iron-icon>
+  <a>Service Type</a>
+</app-toolbar>
+
+<div class="box2 flex">
+  <h1>Service Type</h1>
+   <paper-input-container label="Name">
+    <label slot="input">Name</label>
+    <iron-input slot="input" bind-value="{{formData.name}}">
+     <input id="name" type="text" value="{{formData.name}}" placeholder="Name">
+    </iron-input>
+   </paper-input-container> 
+ 
+   <paper-input-container label="DUration (Min)">
+    <label slot="input">Duration</label>
+    <iron-input slot="input" bind-value="{{formData.duration}}">
+     <input id="duration" type="text" value="{{formData.duration}}" placeholder="Duration(min)">
+    </iron-input>
+   </paper-input-container>
+   
+   <paper-input-container label="Description">
+    <label slot="input">Description</label>
+    <iron-input slot="input" bind-value="{{formData.description}}">
+     <input style="height:150px; width:500px" id="description" type="text" value="{{formData.description}}" placeholder="Description(optional)">
+    </iron-input>
+   </paper-input-container>
+
+ <div class="flex2">
+  <a href="[[rootPath]]service-types">
+   <paper-button style="background-color: red" raised>Cancel</paper-button>
+  </a>
+  <a href="[[rootPath]]service-types">
+   <paper-button style="background-color: green" raised>Save</paper-button>
+  </a>
+ </div>
+
+</div>
+
+</template>
+
+<script>
+  class NewServiceType extends Polymer.Element {
+	static get is() {return 'new-service-type';}
+	}
+
+  window.customElements.define(NewServiceType.is, NewServiceType);
+</script>
+</dom-module>

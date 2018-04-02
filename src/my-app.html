@@ -34,7 +34,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script src="../bower_components/web-animations-js/web-animations.min.js"></script>
 <script src="../bower_components/web-animations-js/web-animations-next-lite.min.js"></script>
 
-
+<link rel="lazy-import" href="array-test">
+<link rel="lazy-import" href="patient-info">
 <link rel="lazy-import" href="provider-schedules">
 <link rel="lazy-import" href="openmrs-home.html">
 <link rel="lazy-import" href="home-quotes.html">
@@ -46,6 +47,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="lazy-import" href="configure-metadata.html">
 <link rel="lazy-import" href="concept-classes.html">
 <link rel="lazy-import" href="man-concepts.html">
+<link rel="lazy-import" href="service-types.html">
+<link rel="lazy-import" href="data-management.html">
+<link rel="lazy-import" href="new-service-type.html">
+<link rel="lazy-import" href="man-appointments.html">
 <link rel="lazy-import" href="patient-record.html">
 
 <link rel="import" href="log-out.html">
@@ -194,7 +199,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <secret-quotes name="secret-quotes"></secret-quotes>
           <not-found name="not-found"></not-found>
 	  <openmrs-home name="openmrs-home"></openmrs-home>
-	  <patient-record name="patient-record"></patient-record>
+	  <service-types name="service-types"></service-types>
 	  <active-visits name="active-visits"></active-visits>
 	  <appointment-scheduling name="appointment-scheduling"></appointment-scheduling>
           <patient-register name="patient-register"></patient-register>
@@ -202,6 +207,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <concept-classes name="concept-classes"></concept-classes> 
 	  <man-concepts name="man-concepts"></man-concepts>
 	  <provider-schedules name="provider-schedules"></provider-schedules>
+	  <data-management name="data-management"></data-management>
+	  <new-service-type name="new-service-type"></new-service-type>
+	  <man-appointments name="man-appointments"></man-appointments>
+	  <patient-record name="patient-record"></patient-record>
+	  <patient-info name="patient-info"></patient-info>
+	  <array-test name="array-test"></array-test>
        </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
@@ -236,7 +247,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _routePageChanged(page) {
         // If no page was found in the route data, page will be an empty string.
         // Default to 'view1' in that case.
-        this.page = page || 'home-quotes';
+        this.page = page || 'openmrs-home';
 
         // Close a non-persistent drawer when the page & route are changed.
         if (!this.$.drawer.persistent) {

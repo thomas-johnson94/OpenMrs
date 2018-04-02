@@ -12,7 +12,9 @@
     "src/configure-metadata.html",
     "src/patient-register.html",
     "src/man-concepts.html",
-    "src/patient-record.html",
+    "src/service-types.html",
+    "src/man-appointments.html",
+    "src/data-management.html",
     "src/active-visits.html"
   ],
   "sources": [

@@ -1,0 +1,168 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid.html">
+<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid-column.html">
+<link rel="import" href="../bower_components/iron-iconset-svg/iron-iconset-svg.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="shared-styles.html">
+
+
+
+<dom-module id="service-types">
+  <template preserve-content>
+    <style include="shared-styles iron-flex iron-flex-alignment">
+      :host {
+	display: block;
+	padding: 10px;
+      }
+
+	paper-button {
+	 font-size: 20px;
+	 background-color: green;
+	}
+	.flex {
+	 @apply --layout-horizontal;
+	 @apply --layout-justified;
+	 }
+	.flex1 {
+	 @apply --layout-horizontal;
+	}
+    </style>
+
+  <app-location
+	route="{{route}}"
+	url-space-regex="^[[rootPath]]">
+  </app-location>
+
+  <app-route
+	route="{{route}}"
+	pattern="[[rootPath]]:page"
+	data="{{routeData}}"
+	tail="{{subroute}}">
+
+  <div class="box">
+   <app-toolbar>
+    <a href="[[rootPath]]openmrs-home">
+	<paper-icon-button style="color:#5B57A6" icon="icons:home"></paper-icon-button>
+    </a>
+	<iron-icon icon="icons:chevron-right"></iron-icon>
+    <a href="[[rootPath]]appointment-scheduling">Appointment Scheduling</a>
+	<iron-icon icon="icons:chevron-right"></iron-icon>
+    <a>Manage Service Types</a>
+   </app-toolbar>
+
+  <div class= "box flex">
+   <h1>Manage Service Types</h1>
+   <a href="[[rootPath]]new-service-type">
+    <paper-button raised><iron-icon icon="icons:add"></iron-icon>New Service Type</paper-button>
+   </a>
+  </div>
+
+    <vaadin-grid page-size="10" aria-label="Manage Service Types"
+	 items='[{"name": "Dermatology", "duration": "10", "description": "not worth"},
+	 {"name": "Dermatology (New Patient)", "duration": "20", "description": []},
+	 {"name": "General Medicine", "duration": "15", "description": []},
+	 {"name": "General Medicine (New Patient)", "duration": "30", "description": []},
+	 {"name": "Gynecology", "duration": "10", "description": []},
+	 {"name": "Gynecology (New Patient)", "duration": "20", "description": []},
+	 {"name": "Infectious Disease", "duration": "15", "description": []},
+	 {"name": "Infectious Disease (New Patient)", "duration": "30", "description": []},
+	 {"name": "Mental Health", "duration": "60", "description": []},
+	 {"name": "Mental Health (New Patient)", "duration": "90", "description": []},
+	 {"name": "Neurology", "duration": "15", "description": []},
+	 {"name": "Neurology (New Patient)", "duration": "30", "description": []},
+	 {"name": "Obstetrics", "duration": "10", "description": []},
+	 {"name": "Obstetrics (New Patient)", "duration": "20", "description": []},
+	 {"name": "Oncology", "duration": "15", "description": []},
+	 {"name": "Oncology (New Patient)", "duration": "30", "description": []},
+	 {"name": "Pediatrics", "duration": "10", "description": []},
+	 {"name": "Pediatrics (New Patient)", "duration":"20", "description": []},
+	 {"name": "Surgery", "duration": "10", "description": []},
+	 {"name": "Surgery (New Patient)", "duration": "20", "description": []},
+	 {"name": "Urology", "duration": "20", "description": []},
+	 {"name": "Urology (New Patient)", "duration": "20", "description": []}
+
+	]'> 
+	 
+	<vaadin-grid-column>
+	 <template class="header">Name</template>
+	 <template>[[item.name]]</template>
+	</vaadin-grid-column>
+
+	<vaadin-grid-column>
+	 <template class="header">Duration (Min)</template>
+	 <template>[[item.duration]]</template>
+	</vaadin-grid-column>
+
+	<vaadin-grid-column>
+	 <template class="header">Description</template>
+	 <template>[[item.description]]</template>
+	</vaadin-grid-column>
+
+	<vaadin-grid-column>
+	 <template class="header">Actions</template>
+	 <template>
+	 <div class="flex1">
+	  <a href="[[rootPath]]openmrs-home">
+	  <paper-icon-button icon="icons:create"></paper-icon-button>
+	  </a>
+	  <a href="[[rootPath]]openmrs-home">
+	  <paper-icon-button icon="icons:close"></paper-icon-button>
+	  </a>
+	 </div>
+	 </template>
+	</vaadin-grid-column>
+
+   </vaadin-grid>
+
+	<div id="pages">
+	 <button on-tap="_prev">&lt;</button>
+	 <template is="dom-repeat" items="[[pages]]">
+	  <button on-tap="_select" selected$="[[_isSelected(page,item)]]">[[item]]</button>
+	 </template>
+	 <button on-tap="_next">&gt;</button>
+	</div> 
+
+  <div class="test">
+   <paper-button style="background-color: green" raised on-tap="_push"></button>
+  </div>
+
+</template>
+	
+<script>
+	class ServiceTypes extends Polymer.Element {
+		static get is() {return 'service-types';}
+		static get properties() {
+		  return {
+		   items: {
+		    type: Array,
+		    notify: true,
+		    value() {
+			return [
+			  new Item({ "name": "Topkek", "duration": "20", "description": "plz"})
+			];
+		     }
+		   }
+		 }
+
+
+	_push
+
+}
+
+
+
+
+ window.customElements.define(ServiceTypes.is, ServiceTypes);
+</script>
+</dom-module>
+
+
+

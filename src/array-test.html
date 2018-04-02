@@ -1,0 +1,46 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+<dom-module id="array-test">
+ <template>
+
+  <div> Service Types: </div>
+  <template is="dom-repeat" items="{{services}}">
+	<div># [[index]]</div>
+	<div>Name: <span>[[item.name]]</span></div>
+	<div>Duration: <span>[[item.duration]]</span></div>
+	<div>Description: </span>[[item.description]]</span></div>
+  </template>
+
+
+  <div class="test">
+  <paper-button style="background-color: green" raised on-tap="_push"></paper-button>
+  </div>
+ </template>
+
+ <script>
+  class ArrayTest extends Polymer.Element {
+	static get is() {return 'array-test'; }
+
+	static get properties() {
+	 return {
+		services: {
+		  type: Array,
+		  value() {
+		    return [
+			{name: 'Dermatology', duration: '10', description: []},
+			{name: 'General Medicine', duration: '15', description: 'hmm'},
+			];
+		  }
+		}
+	      }
+	}
+	_push() {
+	  this.push('services', {name: 'Gynecology', duration: '20', description: []});
+	}
+}
+
+  customElements.define(ArrayTest.is, ArrayTest);
+ </script>
+</dom-module>

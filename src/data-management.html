@@ -1,0 +1,62 @@
+<link rel="import" href="../bower_components/app-layout/app-layout.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../bower_components/iron-iconset-svg/iron-iconset-svg.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/app-toolbar/app-toolbar.html">
+
+<dom-module id="data-management">
+ <template>
+  <style include = "shared-styles">
+	:host {
+	  display: inline-block;
+	  padding: 10px;
+	  text-align: center;
+	}
+  </style>
+
+  <app-location
+	route="{{route}}"
+	url-space-regex="^[[rootPath]]">
+  </app-location>
+
+  <app-route
+	route="{{route}}"
+	pattern="[[rootPath]]:page"
+	data="{{routeData}}"
+	tail="{{subroute}}">
+
+  <div class="box">
+   <app-toolbar>
+    <a href="[[rootPath]]openmrs-home">
+     <paper-icon-button style="color:#5B57A6" icon="icons:home"></paper-icon-button>
+    </a>
+     <iron-icon icon="icons:chevron-right"></iron-icon>
+    <a>Data Management</a>
+   </app-toolbar>
+  </div>
+
+
+  <div class="box">
+   <div class="card">
+    <a href="[[rootPath]]merge-patient-e-records" tabindex="-1">
+	<paper-icon-button style="width:90px; height:90px; color:#5B57A6" sizing="contain" icon="social:group"></paper-icon-button>
+	 <div name="e-records">
+	  <t1>Merge Patient Electronic Records</t1>
+	 </div>
+    </a>
+   </div>
+  </div>
+
+</template>
+
+<script>
+	class DataManagement extends Polymer.Element {
+	  static get is() {return 'data-management';}
+	}
+	window.customElements.define(DataManagement.is, DataManagement);
+</script>
