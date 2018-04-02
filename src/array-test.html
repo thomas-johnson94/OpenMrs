@@ -39,9 +39,7 @@
    	  <a href="[[rootPath]]openmrs-home">
    	  <paper-icon-button icon="icons:create"></paper-icon-button>
    	  </a>
-   	  <a href="[[rootPath]]openmrs-home">
-   	  <paper-icon-button icon="icons:close"></paper-icon-button>
-   	  </a>
+   	  <paper-icon-button icon="icons:close" raised on-tap="_remove"></paper-icon-button>
    	 </div>
    	 </template>
    	</vaadin-grid-column>
@@ -98,6 +96,10 @@
 	  this.push('services', {name: 'Gynecology', duration: '20', description: []});
     services.sort('name');
 	}
+  _remove(services) {
+    var index = this.services.indexOf(services);
+    this.splice('services', index, 1);
+  }
   computeFilter(string) {
     if (!string) {
       return null;
