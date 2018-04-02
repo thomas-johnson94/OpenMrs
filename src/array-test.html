@@ -16,14 +16,6 @@
 <dom-module id="array-test">
  <template>
 
-  <div> Service Types: </div>
-  <template is="dom-repeat" items="{{services}}">
-	<div># [[index]]</div>
-	<div>Name: <span>[[item.name]]</span></div>
-	<div>Duration: <span>[[item.duration]]</span></div>
-	<div>Description: </span>[[item.description]]</span></div>
-  </template>
-
    <vaadin-grid page-size="10" aria-label="Manage Service Types" items="{{services}}">
      <vaadin-grid-column>
    	 <template class="header">Name</template>
@@ -104,7 +96,11 @@
 	}
 	_push() {
 	  this.push('services', {name: 'Gynecology', duration: '20', description: []});
+    this._sort();
 	}
+  _sort() {
+    name.sort('services');
+  }
 }
 
   customElements.define(ArrayTest.is, ArrayTest);
