@@ -24,7 +24,7 @@
 	<div>Description: </span>[[item.description]]</span></div>
   </template>
 
-   <vaadin-grid page-size="10" aria-label="Manage Service Types">
+   <vaadin-grid page-size="10" aria-label="Manage Service Types" items="{{services}}">
      <vaadin-grid-column>
    	 <template class="header">Name</template>
    	 <template>[[item.name]]</template>
