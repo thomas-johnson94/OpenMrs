@@ -65,8 +65,7 @@
 		services: {
 		  type: Array,
 		  value() {
-		    return
-        [
+		    return[
       {name: 'Dermatology', duration: '10', description: 'not worth'},
       {name: 'Dermatology (New Patient)', duration: '20', description: []},
       {name: 'General Medicine', duration: '15', description: []},
@@ -100,7 +99,7 @@
 	}
 
   _remove(services) {
-    var index = this.name.indexOf(services);
+    var index = this.services.indexOf(name);
     this.splice('services', index, 1);
   }
   computeFilter(string) {
