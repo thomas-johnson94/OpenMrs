@@ -67,28 +67,28 @@
 		  value() {
 		    return
         [
-      { name: 'Dermatology', duration: '10', description: 'not worth'},
-      { name: 'Dermatology (New Patient)', duration: '20', description: []},
-      { name: 'General Medicine', duration: '15', description: []},
+      {name: 'Dermatology', duration: '10', description: 'not worth'},
+      {name: 'Dermatology (New Patient)', duration: '20', description: []},
+      {name: 'General Medicine', duration: '15', description: []},
       {name: 'General Medicine (New Patient)', duration: '30', description: []},
-      { name: 'Gynecology', duration: '10', description: []},
+      {name: 'Gynecology', duration: '10', description: []},
       {name: 'Gynecology (New Patient)', duration: '20', description: []},
       {name: 'Infectious Disease', duration: '15', description: []},
       {name: 'Infectious Disease (New Patient)', duration: '30', description: []},
       {name: 'Mental Health', duration: '60', description: []},
       {name: 'Mental Health (New Patient)', duration: '90', description: []},
-      { name: 'Neurology', duration: '15', description: []},
-      { name: 'Neurology (New Patient)', duration: '30', description: []},
+      {name: 'Neurology', duration: '15', description: []},
+      {name: 'Neurology (New Patient)', duration: '30', description: []},
       {name: 'Obstetrics', duration: '10', description: []},
       {name: 'Obstetrics (New Patient)', duration: '20', description: []},
       {name: 'Oncology', duration: '15', description: []},
       {name: 'Oncology (New Patient)', duration: '30', description: []},
       {name: 'Pediatrics', duration: '10', description: []},
-      { name: 'Pediatrics (New Patient)', duration:'20', description: []},
-      { name: 'Surgery', duration: '10', description: []},
-      { name: 'Surgery (New Patient)', duration: '20', description: []},
-      { name: 'Urology', duration: '20', description: []},
-      { name: 'Urology (New Patient)', duration: '20', description: []},
+      {name: 'Pediatrics (New Patient)', duration:'20', description: []},
+      {name: 'Surgery', duration: '10', description: []},
+      {name: 'Surgery (New Patient)', duration: '20', description: []},
+      {name: 'Urology', duration: '20', description: []},
+      {name: 'Urology (New Patient)', duration: '20', description: []},
 			];
 
 		  }
@@ -112,7 +112,7 @@
     return 0;
   }
   _remove(services) {
-    var index = this.services.indexOf('services');
+    var index = this.services.indexOf(services);
     this.splice('services', index, 1);
   }
   computeFilter(string) {
