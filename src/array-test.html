@@ -108,8 +108,8 @@
     }
     return 0;
   }
-  _remove(services) {
-    var index = this.services.indexOf(services);
+  _remove('services') {
+    var index = this.services.indexOf('services');
     this.splice('services', index, 1);
     this.notifyPath('services');
   }
