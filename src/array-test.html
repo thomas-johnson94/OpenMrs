@@ -16,7 +16,7 @@
 <dom-module id="array-test">
  <template>
 
-   <vaadin-grid page-size="10" aria-label="Manage Service Types" items="{{services}}">
+   <vaadin-grid page-size="10" aria-label="Manage Service Types" items="{{services}}" sort="_sort">
 
      <vaadin-grid-column>
    	 <template class="header">Name</template>
@@ -96,7 +96,12 @@
 	}
 	_push() {
 	  this.push('services', {name: 'Gynecology', duration: '20', description: []});
+    this.notifyPath('services')
 	}
+
+  _sort() {
+    this.services.name.sort();
+  }
 
   _remove(services) {
     var index = this.services.indexOf(name);
