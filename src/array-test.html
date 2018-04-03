@@ -100,7 +100,7 @@
 	}
 
   _remove(services) {
-    var index = this.services.indexOf(services);
+    var index = this.name.indexOf(services);
     this.splice('services', index, 1);
   }
   computeFilter(string) {
