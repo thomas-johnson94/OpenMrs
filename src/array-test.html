@@ -16,11 +16,7 @@
 <dom-module id="array-test">
  <template>
 
-   <vaadin-grid page-size="10" aria-label="Manage Service Types" items="{{services}}" sort="_sort">
-     <vaadin-grid-column width="50px" flex-grow="0">
-       <template class="header">#</template>
-       <template>[[item.index]]</template>
-     <vaadin-grid-column>
+   <vaadin-grid page-size="10" aria-label="Manage Service Types" items="{{services}}">
 
      <vaadin-grid-column>
    	 <template class="header">Name</template>
@@ -70,33 +66,31 @@
 		  type: Array,
 		  value() {
 		    return
-        for (i=0; i <= services.length; i++)
-        {
         [
-      {index: [i], name: 'Dermatology', duration: '10', description: 'not worth'},
-      {index: [i], name: 'Dermatology (New Patient)', duration: '20', description: []},
-      {index: [i], name: 'General Medicine', duration: '15', description: []},
-      {index: [i], name: 'General Medicine (New Patient)', duration: '30', description: []},
-      {index: [i], name: 'Gynecology', duration: '10', description: []},
-      {index: [i], name: 'Gynecology (New Patient)', duration: '20', description: []},
-      {index: [i], name: 'Infectious Disease', duration: '15', description: []},
-      {index: [i], name: 'Infectious Disease (New Patient)', duration: '30', description: []},
-      {index: [i], name: 'Mental Health', duration: '60', description: []},
-      {index: [i], name: 'Mental Health (New Patient)', duration: '90', description: []},
-      {index: [i], name: 'Neurology', duration: '15', description: []},
-      {index: [i], name: 'Neurology (New Patient)', duration: '30', description: []},
-      {index: [i], name: 'Obstetrics', duration: '10', description: []},
-      {index: [i], name: 'Obstetrics (New Patient)', duration: '20', description: []},
-      {index: [i], name: 'Oncology', duration: '15', description: []},
-      {index: [i], name: 'Oncology (New Patient)', duration: '30', description: []},
-      {index: [i], name: 'Pediatrics', duration: '10', description: []},
-      {index: [i], name: 'Pediatrics (New Patient)', duration:'20', description: []},
-      {index: [i], name: 'Surgery', duration: '10', description: []},
-      {index: [i], name: 'Surgery (New Patient)', duration: '20', description: []},
-      {index: [i], name: 'Urology', duration: '20', description: []},
-      {index: [i], name: 'Urology (New Patient)', duration: '20', description: []},
+      { name: 'Dermatology', duration: '10', description: 'not worth'},
+      { name: 'Dermatology (New Patient)', duration: '20', description: []},
+      { name: 'General Medicine', duration: '15', description: []},
+      {name: 'General Medicine (New Patient)', duration: '30', description: []},
+      { name: 'Gynecology', duration: '10', description: []},
+      {name: 'Gynecology (New Patient)', duration: '20', description: []},
+      {name: 'Infectious Disease', duration: '15', description: []},
+      {name: 'Infectious Disease (New Patient)', duration: '30', description: []},
+      {name: 'Mental Health', duration: '60', description: []},
+      {name: 'Mental Health (New Patient)', duration: '90', description: []},
+      { name: 'Neurology', duration: '15', description: []},
+      { name: 'Neurology (New Patient)', duration: '30', description: []},
+      {name: 'Obstetrics', duration: '10', description: []},
+      {name: 'Obstetrics (New Patient)', duration: '20', description: []},
+      {name: 'Oncology', duration: '15', description: []},
+      {name: 'Oncology (New Patient)', duration: '30', description: []},
+      {name: 'Pediatrics', duration: '10', description: []},
+      { name: 'Pediatrics (New Patient)', duration:'20', description: []},
+      { name: 'Surgery', duration: '10', description: []},
+      { name: 'Surgery (New Patient)', duration: '20', description: []},
+      { name: 'Urology', duration: '20', description: []},
+      { name: 'Urology (New Patient)', duration: '20', description: []},
 			];
-    };
+
 		  }
 		}
 	      }
@@ -120,7 +114,6 @@
   _remove(services) {
     var index = this.services.indexOf('services');
     this.splice('services', index, 1);
-    this.notifyPath('services');
   }
   computeFilter(string) {
     if (!string) {
