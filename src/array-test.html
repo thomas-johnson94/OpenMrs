@@ -94,7 +94,7 @@
 	}
 	_push() {
 	  this.push('services', {name: 'Gynecology', duration: '20', description: []});
-    this.notifyPath('services', {name});
+    this.notifyPath('services', {name, duration, description});
 	}
 
   _sort(a,b) {
