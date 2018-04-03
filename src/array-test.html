@@ -17,6 +17,11 @@
  <template>
 
    <vaadin-grid page-size="10" aria-label="Manage Service Types" items="{{services}}" sort="_sort">
+     <vaadin-grid-column width="50px" flex-grow="0">
+       <template class="header">#</template>
+       <template>[[index]]</template>
+     <vaadin-grid-column>
+
      <vaadin-grid-column>
    	 <template class="header">Name</template>
    	 <template>[[item.name]]</template>
@@ -110,7 +115,7 @@
     return 0;
   }
   _remove(services) {
-    var index = this.container.indexOf('services');
+    var index = this.services.indexOf('services');
     this.splice('services', index, 1);
     this.notifyPath('services');
   }
