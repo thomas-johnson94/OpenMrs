@@ -94,7 +94,7 @@
 	}
 	_push() {
 	  this.push('services', {name: 'Gynecology', duration: '20', description: []});
-    services.sort('name');
+    this.notifyPath('services');
 	}
   _remove(services) {
     var index = this.services.indexOf(services);
