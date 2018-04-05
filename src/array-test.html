@@ -161,10 +161,12 @@ this.storedForm = {
     this.services.name.sort();
   }
 
-  _remove(services) {
-    name = services.name;
-    var index = this.services.indexOf(name);
-    this.splice('services', index, -1);
+  _remove(e) {
+    var index = this.services.findIndex(services)
+    {
+      return item.id == e.target.parentElement.id
+    });
+    this.splice('services', index, 1);
   }
   computeFilter(string) {
     if (!string) {
