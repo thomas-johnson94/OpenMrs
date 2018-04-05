@@ -160,7 +160,8 @@ this.storedForm = {
     this.services.name.sort();
   }
 
-  _remove(services) {
+  _remove(e) {
+    item = e.services.item;
     var index = this.services.indexOf(item);
     this.splice('services', index, 1);
   }
