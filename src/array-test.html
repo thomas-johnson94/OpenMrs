@@ -162,10 +162,10 @@ this.storedForm = {
   }
 
   _remove(e) {
-    var index = this.services.findIndex((services)
+    var index = this.services.findIndex(services)
     {
       return item.id == e.target.parentElement.id
-    });
+    };
     this.splice('services', index, 1);
   }
   computeFilter(string) {
