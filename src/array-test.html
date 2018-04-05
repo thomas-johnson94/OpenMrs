@@ -148,6 +148,7 @@ this.storedForm = {
   duration: this.formData.duration,
   description: this.formData.description
   };
+  this._pushForm();
   this._push();
 }
 
@@ -160,9 +161,9 @@ this.storedForm = {
     this.services.name.sort();
   }
 
-  _remove(e) {
-    item = e.services.item;
-    var index = this.services.indexOf(item);
+  _remove(services) {
+    name = services.name;
+    var index = this.services.indexOf(name);
     this.splice('services', index, 1);
   }
   computeFilter(string) {
