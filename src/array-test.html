@@ -123,13 +123,12 @@
 
 		  }
 		},
-    return {
       formData: {
         type: Object,
         value: {}
    }
 	}
-
+}
 _setReqBody() {
   this.$.registerFormAjax.body = this.formData;
 }
@@ -147,7 +146,7 @@ this.storedForm = {
   duration: this.formData.duration,
   description: this.formData.description
   };
-  this._push('services');
+  this._push();
 }
 
 	_push() {
