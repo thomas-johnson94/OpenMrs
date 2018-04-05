@@ -51,7 +51,7 @@
    	  <a href="[[rootPath]]openmrs-home">
    	  <paper-icon-button icon="icons:create"></paper-icon-button>
    	  </a>
-   	  <paper-icon-button icon="icons:close" raised on-tap="this.splice">[[item]]</paper-icon-button>
+   	  <paper-icon-button icon="icons:close" raised on-tap= this.splice>[[item]]</paper-icon-button>
    	 </div>
    	 </template>
    	</vaadin-grid-column>
@@ -162,7 +162,7 @@ this.storedForm = {
   }
 
   _remove(services) {
-    var index = this.services.findIndex(name)
+    var index = this.services.indexOf(name);
     this.splice('services', index, 1);
   }
   computeFilter(string) {
