@@ -131,6 +131,15 @@
    storedForm: Object
 	}
 }
+
+ retrieveIndex(services)
+ {
+   for(i=0; i < services.length; i++)
+   {
+     this.services[i].index = i;
+   }
+ }
+
 _setReqBody() {
   this.$.registerFormAjax.body = this.formData;
 }
@@ -161,8 +170,8 @@ this.storedForm = {
     this.services.name.sort();
   }
 
-  _remove(item) {
-    var index = this.services.indexOf(item);
+  _remove(services) {
+    var index = retrieveIndex();
     this.splice('services', index, 1);
   }
   computeFilter(string) {
