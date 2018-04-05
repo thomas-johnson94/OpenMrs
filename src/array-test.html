@@ -11,7 +11,10 @@
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="shared-styles.html">
+<link rel="import" href="../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
 
 <dom-module id="array-test">
  <template>
@@ -47,9 +50,29 @@
 
       </vaadin-grid>
 
-  <div class="test">
-    <h1>help</h1>
-  </div>
+      <div class="box2 flex">
+        <h1>Service Type</h1>
+         <paper-input-container label="Name">
+          <label slot="input">Name</label>
+          <iron-input slot="input" bind-value="{{formData.name}}">
+           <input id="name" type="text" value="{{formData.name}}" placeholder="Name">
+          </iron-input>
+         </paper-input-container>
+
+         <paper-input-container label="DUration (Min)">
+          <label slot="input">Duration</label>
+          <iron-input slot="input" bind-value="{{formData.duration}}">
+           <input id="duration" type="text" value="{{formData.duration}}" placeholder="Duration(min)">
+          </iron-input>
+         </paper-input-container>
+
+         <paper-input-container label="Description">
+          <label slot="input">Description</label>
+          <iron-input slot="input" bind-value="{{formData.description}}">
+           <input style="height:150px; width:500px" id="description" type="text" value="{{formData.description}}" placeholder="Description(optional)">
+          </iron-input>
+         </paper-input-container>
+      </div>
 
   <div class="test">
   <paper-button style="background-color: green" raised on-tap="_push"></paper-button>
