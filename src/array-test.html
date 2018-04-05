@@ -15,8 +15,15 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/iron-localstorage/iron-localstorage.html">
 
 <dom-module id="array-test">
+  <iron-ajax
+  id="registerFormAjax"
+	content-type="application/json"
+	handle-as="arraybuffer"
+	on-response="handleUserResponse">
+  </iron-ajax>
  <template>
 
    <vaadin-grid page-size="10" aria-label="Manage Service Types" items="{{services}}" sort="_sort">
@@ -50,6 +57,7 @@
 
       </vaadin-grid>
 
+<iron-localstorage name="form-storage" value="{{storedForm}}"></iron-localstorage>
       <div class="box2 flex">
         <h1>Service Type</h1>
          <paper-input-container label="Name">
@@ -115,18 +123,35 @@
 
 		  }
 		},
-    formData: {
-      type: Array,
-      value() {
-        return [
-        {name: 'formData.name', duration: 'formData.duration', description: 'formData.description'}
-      ];
-      }
-    }
-	      }
+    return {
+      formData: {
+        type: Object,
+        value: {}
+   }
 	}
+
+_setReqBody() {
+  this.$.registerFormAjax.body = this.formData;
+}
+
+_pushForm() {
+  this._setReqBody();
+  this.$.registerFormAjax.generateRequest();
+}
+
+handleUserResponse(event) {
+var response = JSON.parse(event.detail.response);
+
+this.storedForm = {
+  name: this.formData.name,
+  duration: this.formData.duration,
+  description: this.formData.description
+  };
+  this._push('services');
+}
+
 	_push() {
-	  this.push('services', {name: 'Gynecology', duration: '20', description: []});
+	  this.push('services', 'storedForm');
     this.notifyPath('services')
 	}
 
