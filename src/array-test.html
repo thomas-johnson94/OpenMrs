@@ -115,6 +115,14 @@
 
 		  }
 		}
+    formData: {
+      type: Array,
+      value() {
+        return [
+        {name: 'formData.name', duration: 'formData.duration', description: 'formData.description'}
+      ];
+      }
+    }
 	      }
 	}
 	_push() {
