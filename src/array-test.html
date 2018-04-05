@@ -47,6 +47,14 @@
    	<vaadin-grid-column>
    	 <template class="header">Actions</template>
    	 <template>[[item.actions]]</template>
+     <template>
+     <div class="flex1">
+      <a href="[[rootPath]]openmrs-home">
+      <paper-icon-button icon="icons:create"></paper-icon-button>
+      </a>
+      <paper-icon-button icon="icons:close" raised on-tap="_remove">[[item]]</paper-icon-button>
+     </div>
+     </template>
    	</vaadin-grid-column>
 
       </vaadin-grid>
@@ -91,14 +99,9 @@
 		  type: Array,
 		  value() {
 		    return[
-      {name: 'Dermatology', duration: '10', description: 'not worth', action: '   	 <div class="flex1">
-         	  <a href="[[rootPath]]openmrs-home">
-         	  <paper-icon-button icon="icons:create"></paper-icon-button>
-         	  </a>
-         	  <paper-icon-button icon="icons:close" raised on-tap="_remove">[[item]]</paper-icon-button>
-         	 </div>' },
-      {name: 'Dermatology (New Patient)', duration: '20', description: [], action: '<paper-icon-button icon="icons:close" raised on-tap="_remove">[[item]]</paper-icon-button>'},
-      {name: 'General Medicine', duration: '15', description: [], action: '<paper-icon-button icon="icons:close" raised on-tap="_remove">[[item]]</paper-icon-button>'},
+      {name: 'Dermatology', duration: '10', description: 'not worth', action: [] },
+      {name: 'Dermatology (New Patient)', duration: '20', description: [], action: []},
+      {name: 'General Medicine', duration: '15', description: [], action: []},
       {name: 'General Medicine (New Patient)', duration: '30', description: []},
       {name: 'Gynecology', duration: '10', description: []},
       {name: 'Gynecology (New Patient)', duration: '20', description: []},
