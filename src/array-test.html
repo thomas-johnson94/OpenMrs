@@ -19,9 +19,10 @@
 
 <dom-module id="array-test">
   <iron-ajax
+  auto
+  url="{{url}}"
   id="registerFormAjax"
-	content-type="application/json"
-	handle-as="arraybuffer"
+	handle-as="json"
 	on-response="handleUserResponse">
   </iron-ajax>
  <template>
