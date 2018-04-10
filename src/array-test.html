@@ -20,9 +20,9 @@
 <dom-module id="array-test">
   <iron-ajax
   auto
-  url="{{url}}"
+  url="http://httpbin.org/post"
+  method="post"
   id="registerFormAjax"
-	handle-as="json"
 	on-response="handleUserResponse">
   </iron-ajax>
  <template>
