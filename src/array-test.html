@@ -61,26 +61,37 @@
 <iron-localstorage name="form-storage" value="{{storedForm}}"></iron-localstorage>
       <div class="box2 flex">
         <h1>Service Type</h1>
-         <paper-input-container label="Name">
-          <label slot="input">Name</label>
-          <iron-input slot="input" bind-value="{{formData.name}}">
-           <input id="name" type="text" value="{{formData.name}}" placeholder="Name">
-          </iron-input>
-         </paper-input-container>
+        <iron-form id="myForm" on-iron-form-presubmit="_presubmit">
+          <form method="post"
+                action="//httpbin.org/post">
 
-         <paper-input-container label="DUration (Min)">
-          <label slot="input">Duration</label>
-          <iron-input slot="input" bind-value="{{formData.duration}}">
-           <input id="duration" type="text" value="{{formData.duration}}" placeholder="Duration(min)">
-          </iron-input>
-         </paper-input-container>
+                <paper-input-container label="Name">
+                 <label slot="input">Name</label>
+                 <iron-input slot="input" bind-value="{{formData.name}}">
+                  <input id="name" type="text" value="{{formData.name}}" placeholder="Name">
+                 </iron-input>
+                </paper-input-container>
+                <paper-input-container label="Duration (Min)">
+                 <label slot="input">Duration</label>
+                 <iron-input slot="input" bind-value="{{formData.duration}}">
+                  <input id="duration" type="text" value="{{formData.duration}}" placeholder="Duration(min)">
+                 </iron-input>
+                </paper-input-container>
+                <paper-input-container label="Description">
+                 <label slot="input">Description</label>
+                 <iron-input slot="input" bind-value="{{formData.description}}">
+                  <input style="height:150px; width:500px" id="description" type="text" value="{{formData.description}}" placeholder="Description(optional)">
+                 </iron-input>
+                </paper-input-container>
+            <paper-button on-tap="_submit">Submit</paper-button>
+          </form>
+        </iron-form>
 
-         <paper-input-container label="Description">
-          <label slot="input">Description</label>
-          <iron-input slot="input" bind-value="{{formData.description}}">
-           <input style="height:150px; width:500px" id="description" type="text" value="{{formData.description}}" placeholder="Description(optional)">
-          </iron-input>
-         </paper-input-container>
+
+
+
+
+
       </div>
 
   <div class="test">
@@ -186,6 +197,16 @@ this.storedForm = {
       };
     }
   }
+  _presubmit(e) {
+     const body = this.$.myForm.request.body;
+    body['newkey'] = [1,2,3];
+    console.log('presubmit body', body);
+  }
+
+  _submit() {
+    this.$.myForm.submit();
+  }
+
 }
 
   customElements.define(ArrayTest.is, ArrayTest);
