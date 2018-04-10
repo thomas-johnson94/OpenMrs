@@ -6,6 +6,7 @@
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
 
 <dom-module id="new-service-type">
  <template>
@@ -13,7 +14,7 @@
 	:host {
 	  --app-primary-color: #009384;
 	  --app-secondary-color: black;
-	
+
 	display: block;
 	}
 	app-toolbar {
@@ -54,6 +55,13 @@
   <a>Service Type</a>
 </app-toolbar>
 
+<iron-form>
+<form action="http://httpbin.org/get" type="get">
+  <form-input name="{{_name}}"></form-input>
+  <input type="submit" class="btn">
+
+  <input name="name" value="[[_name]]" hidden>
+</iron-form>
 <div class="box2 flex">
   <h1>Service Type</h1>
    <paper-input-container label="Name">
@@ -61,15 +69,15 @@
     <iron-input slot="input" bind-value="{{formData.name}}">
      <input id="name" type="text" value="{{formData.name}}" placeholder="Name">
     </iron-input>
-   </paper-input-container> 
- 
+   </paper-input-container>
+
    <paper-input-container label="DUration (Min)">
     <label slot="input">Duration</label>
     <iron-input slot="input" bind-value="{{formData.duration}}">
      <input id="duration" type="text" value="{{formData.duration}}" placeholder="Duration(min)">
     </iron-input>
    </paper-input-container>
-   
+
    <paper-input-container label="Description">
     <label slot="input">Description</label>
     <iron-input slot="input" bind-value="{{formData.description}}">
