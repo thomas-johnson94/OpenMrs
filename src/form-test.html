@@ -1,0 +1,37 @@
+
+  <base href="https://polygit.org/polymer+v2.1.1/components/">
+  <script src="webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="polymer/polymer.html">
+  <link rel="import" href="iron-form/iron-form.html">
+  <link rel="import" href="paper-input/paper-input.html">
+  <link rel="import" href="paper-button/paper-button.html">
+
+  <dom-module id="form-test">
+    <template>
+      <iron-form id="myForm" on-iron-form-presubmit="_presubmit">
+        <form method="post"
+              action="//httpbin.org/post">
+          <paper-input name="name" label="name"></paper-input>
+          <paper-button on-tap="_submit">Submit</paper-button>
+        </form>
+      </iron-form>
+    </template>
+
+
+<script>
+  class FormTest extends Polymer.Element {
+    static get is() { return 'form-test'; }
+
+    _presubmit(e) {
+      const body = this.$.myForm.request.body;
+      body['newkey'] = [1,2,3];
+      console.log('presubmit body', body);
+    }
+
+    _submit() {
+      this.$.myForm.submit();
+    }
+  }
+  customElements.define(XFoo.is, XFoo);
+</script>
+</dom-module>

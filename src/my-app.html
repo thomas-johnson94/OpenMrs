@@ -34,6 +34,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script src="../bower_components/web-animations-js/web-animations.min.js"></script>
 <script src="../bower_components/web-animations-js/web-animations-next-lite.min.js"></script>
 
+<link rel="lazy-import" href="form-test">
 <link rel="lazy-import" href="array-test">
 <link rel="lazy-import" href="patient-info">
 <link rel="lazy-import" href="provider-schedules">
@@ -110,7 +111,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	font-size: 13px;
 	display: inline-block;
 	padding: 10px;
-	text-align: right;	
+	text-align: right;
 	}
       paper-listbox {
 	--primary-text-color: black;
@@ -156,7 +157,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <app-toolbar>
             <paper-icon-button icon="icons:menu" drawer-toggle></paper-icon-button>
 	    <iron-image style="width:100px; height:100px;" sizing="contain" src="https://issues.openmrs.org/secure/attachment/33513/openmrs-logo.png"></iron-image>
-	    
+
 	    <div main-title> </div>
 	    <div hidden$="[[!storedUser.loggedin]]">
 	    <iron-icon style="width:30px; height:24px;" sizing="contain" icon="social:person"></iron-icon>
@@ -204,7 +205,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	  <appointment-scheduling name="appointment-scheduling"></appointment-scheduling>
           <patient-register name="patient-register"></patient-register>
 	  <configure-metadata name="configure-metadata"></configure-metadata>
-          <concept-classes name="concept-classes"></concept-classes> 
+          <concept-classes name="concept-classes"></concept-classes>
 	  <man-concepts name="man-concepts"></man-concepts>
 	  <provider-schedules name="provider-schedules"></provider-schedules>
 	  <data-management name="data-management"></data-management>
@@ -213,6 +214,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 	  <patient-record name="patient-record"></patient-record>
 	  <patient-info name="patient-info"></patient-info>
 	  <array-test name="array-test"></array-test>
+    <form-test name="form-test"></form-test>
        </iron-pages>
       </app-header-layout>
     </app-drawer-layout>

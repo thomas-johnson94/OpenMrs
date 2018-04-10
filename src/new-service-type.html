@@ -90,11 +90,23 @@
  </div>
 
 </div>
+  <template is="dom-bind">
+  <iron-form id="NewServiceType">
+  <form action="http://httpbin.org/post" type="post">
+    <service-input name="{{_name}}"></service-input>
 
+    <service-input duration="{{_duration}}"></service-input>
+
+      <input type="submit" class="btn">
+
+    <input name="duration" value="[[_duration]]" hidden>
+    <input name="name" value="[[_name]]" hidden>
+  </iron-form>
+</template>
 <input placeholder="Kek" id="name">
 <span></span>
 <input placeholder="Kek2Hyperkek" id="duration">
-<input type="submit" class="btn">
+
 </template>
 
 <script>
