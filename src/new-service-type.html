@@ -115,7 +115,7 @@
     this.addEventListener('input', this._onInput)
   }
 
-  _onInput() {
+  _onInput(event) {
     this.service = this.$.name.value.trim() + '/' + this.$.duration.value.trim();
   }
   }
