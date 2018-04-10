@@ -89,8 +89,8 @@
 	 {"name": "Urology", "duration": "20", "description": []},
 	 {"name": "Urology (New Patient)", "duration": "20", "description": []}
 
-	]'> 
-	 
+	]'>
+
 	<vaadin-grid-column>
 	 <template class="header">Name</template>
 	 <template>[[item.name]]</template>
@@ -128,14 +128,14 @@
 	  <button on-tap="_select" selected$="[[_isSelected(page,item)]]">[[item]]</button>
 	 </template>
 	 <button on-tap="_next">&gt;</button>
-	</div> 
+	</div>
 
   <div class="test">
    <paper-button style="background-color: green" raised on-tap="_push"></button>
   </div>
 
 </template>
-	
+
 <script>
 	class ServiceTypes extends Polymer.Element {
 		static get is() {return 'service-types';}
@@ -156,6 +156,7 @@
 	_push
 
 }
+}
 
 
 
@@ -163,6 +164,3 @@
  window.customElements.define(ServiceTypes.is, ServiceTypes);
 </script>
 </dom-module>
-
-
-
