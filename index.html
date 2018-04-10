@@ -31,7 +31,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <base href="/">
 
     <link rel="icon" href="images/favicon.ico">
- 
+
 
     <!-- See https://goo.gl/OOhYW5 -->
     <link rel="manifest" href="manifest.json">
@@ -91,7 +91,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <!-- Load your application shell -->
     <link rel="import" href="src/my-app.html">
 
-
+    <link rel="import" href="src/new-service-type.html">
     <!-- Add any global styles for body, document, etc. -->
     <style>
       body {
@@ -104,11 +104,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
   </head>
   <body>
-    <my-app></my-app> 
+    <my-app></my-app>
+    <template is="dom-bind">
+    <iron-form id="NewServiceType">
+    <form action="http://httpbin.org/get" type="get">
+      <service-input name="{{_name}}"></service-input>
+
+      <service-input duration="{{_duration}}"></service-input>
+
+        <input type="submit" class="btn">
+
+      <input name="duration" value="[[_duration]]" hidden>
+      <input name="name" value="[[_name]]" hidden>
+    </iron-form>
+  </template>
     <noscript>
       Please enable JavaScript to view this website.
     </noscript>
-  
+
 
   <!-- Built with love using Polymer Starter Kit -->
   </body>

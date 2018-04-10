@@ -110,10 +110,9 @@
     }
   }
 
-  static get listeners() {
-    return {
-      'input': '_onInput'
-    }
+  ready() {
+    super.ready()
+    this.addEventListener('input', this._onInput)
   }
 
   _onInput() {
