@@ -55,13 +55,17 @@
   <a>Service Type</a>
 </app-toolbar>
 
+<template is="dom-bind">
 <iron-form>
 <form action="http://httpbin.org/get" type="get">
   <form-input name="{{_name}}"></form-input>
-  <input type="submit" class="btn">
+  <form-input duration="{{duration}}"></form-input>
+    <input type="submit" class="btn">
 
+  <input duration="duration" value="[[_duration]]" hidden>
   <input name="name" value="[[_name]]" hidden>
 </iron-form>
+</template>
 <div class="box2 flex">
   <h1>Service Type</h1>
    <paper-input-container label="Name">
@@ -101,7 +105,26 @@
 <script>
   class NewServiceType extends Polymer.Element {
 	static get is() {return 'new-service-type';}
-	}
+
+  static get properties() {
+    return {
+      service: {
+        type: String,
+        notify: true
+      }
+    }
+  },
+
+  static get listeners() {
+    return {
+      'input': '_onInput'
+    }
+  },
+
+  _onInput() {
+    this.service = this.$.name.value.trim() + '/' + this.$.duration.value.trim();
+  }
+  }
 
   window.customElements.define(NewServiceType.is, NewServiceType);
 </script>
