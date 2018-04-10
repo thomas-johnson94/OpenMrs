@@ -67,24 +67,9 @@
           <form method="post"
                 action="//httpbin.org/post">
 
-                <paper-input-container label="Name">
-                 <label slot="input">Name</label>
-                 <iron-input slot="input" bind-value="{{formData.name}}">
-                  <input id="name" type="text" value="{{formData.name}}" placeholder="Name">
-                 </iron-input>
-                </paper-input-container>
-                <paper-input-container label="Duration (Min)">
-                 <label slot="input">Duration</label>
-                 <iron-input slot="input" bind-value="{{formData.duration}}">
-                  <input id="duration" type="text" value="{{formData.duration}}" placeholder="Duration(min)">
-                 </iron-input>
-                </paper-input-container>
-                <paper-input-container label="Description">
-                 <label slot="input">Description</label>
-                 <iron-input slot="input" bind-value="{{formData.description}}">
-                  <input style="height:150px; width:500px" id="description" type="text" value="{{formData.description}}" placeholder="Description(optional)">
-                 </iron-input>
-                </paper-input-container>
+                <paper-input name="name" label="name"></paper-input>
+                <paper-input name="duration" label="duration"></paper-input>
+                <paper-input name="description" label="Description(optional)"></paper-input>
             <paper-button on-tap="_submit">Submit</paper-button>
           </form>
         </iron-form>
