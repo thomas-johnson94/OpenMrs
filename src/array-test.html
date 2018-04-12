@@ -202,12 +202,14 @@ getSso(serverSuccessObj) {
    console.log(storedForm.name);
    console.log(storedForm.duration);
    console.log(storedForm.description);
+  this.notifyPath(this.storedForm)
 
 }
 
  _push() {
-   this.push('services', this.storedForm);
-   this.notifyPath('services')
+   var storedForm = this.get('storedForm');
+   this.push('services', storedForm);
+   this.notifyPath('services');
  }
 
  _sort() {
