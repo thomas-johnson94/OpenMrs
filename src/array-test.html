@@ -22,8 +22,8 @@
 <dom-module id="array-test">
   <iron-ajax
   url="https://jsonplaceholder.typicode.com/posts"
-  method="POST"
   id="registerFormAjax"
+  method="POST"
   handle-as="json"
   content-type="application/json"
   body='{{postBody}}'
@@ -175,12 +175,7 @@
    }
  }
 
-_setReqBody() {
-  this.$.registerFormAjax.body = this.formData;
-}
-
 _pushForm() {
-  this._setReqBody();
   this.$.registerFormAjax.generateRequest();
 }
 
