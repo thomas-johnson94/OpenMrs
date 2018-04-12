@@ -20,6 +20,17 @@
 <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
 <dom-module id="array-test">
+
+  <style include="shared-styles">
+    :host {
+      display: block;
+      padding: 10px;
+    }
+    .mt-20{
+      margin-top: 20px;
+    }
+  </style>
+
   <iron-ajax
   url="https://jsonplaceholder.typicode.com/posts"
   id="registerForm"
