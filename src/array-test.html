@@ -27,8 +27,10 @@
   handle-as="json"
   content-type="application/json"
   body='{{postBody}}'
-	on-response="handleUserResponse"
-  last-response="{{handleUserResponse}}">
+	on-response="serverSuccessCb"
+  last-response="{{serverSuccessObj}}"
+  on-error="serverErrorCb"
+  last-error="{{serverErrorObj}}">
   </iron-ajax>
 
 
