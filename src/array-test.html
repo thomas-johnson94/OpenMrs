@@ -244,6 +244,7 @@ this.storedForm = {
  }
  getSso(serverSuccessObj) {
    var json = JSON.stringify(serverSuccessObj);
+   return JSON.stringify(serverSuccessObj);
    handleUserResponse(json);
  }
 
