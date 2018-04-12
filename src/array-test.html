@@ -143,6 +143,17 @@
 		  }
 		},
 
+    formData: {
+      type: Object,
+      value: {},
+      notify: true
+    },
+
+    storedForm: {
+      type: Object,
+      notify: true
+    }
+
    name: {
      type: String,
      notify: true,
@@ -188,7 +199,7 @@ this.storedForm = {
  duration: this.formData.duration,
  description: this.formData.description
  };
- this._push();
+ this.$.storedForm._push();
 }
 
  _push() {
@@ -233,6 +244,7 @@ this.storedForm = {
  }
  getSso(serverSuccessObj) {
    return JSON.stringify(serverSuccessObj);
+   handleUserResponse();
  }
 
 }
