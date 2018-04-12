@@ -196,18 +196,18 @@ getSso(serverSuccessObj) {
   this.storedForm = {
     name: this.formData.name,
     duration: this.formData.duration,
-    description: this.formData.description
+    description: this.formData.description,
+    notify: true
    };
 
    console.log(storedForm.name);
    console.log(storedForm.duration);
    console.log(storedForm.description);
-  this.notifyPath(this.storedForm)
 
 }
 
  _push() {
-   var storedForm = this.get('storedForm');
+   var storedForm = this.get(this.storedForm);
    this.push('services', storedForm);
    this.notifyPath('services');
  }
