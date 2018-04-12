@@ -21,12 +21,17 @@
 
 <dom-module id="array-test">
   <iron-ajax
-  auto
-  url="http://httpbin.org/post"
-  method="post"
+  url="https://jsonplaceholder.typicode.com/posts"
+  method="POST"
   id="registerFormAjax"
-	on-response="handleUserResponse">
+  handle-as="json"
+  content-type="application/json"
+  body='{{postBody}}'
+	on-response="handleUserResponse"
+  last-response="{{handleUserResponse}}">
   </iron-ajax>
+
+
  <template>
 
    <vaadin-grid page-size="10" aria-label="Manage Service Types" items="{{services}}" sort="_sort">
@@ -64,13 +69,11 @@
       <div class="box2 flex">
         <h1>Service Type</h1>
         <iron-form id="myForm" on-iron-form-presubmit="_presubmit">
-          <form method="post"
-                action="//httpbin.org/post">
 
                 <paper-input name="name" label="name"></paper-input>
                 <paper-input name="duration" label="duration"></paper-input>
                 <paper-input name="description" label="Description(optional)"></paper-input>
-            <paper-button on-tap="_submit">Submit</paper-button>
+            <paper-button on-tap="sendData">Submit</paper-button>
           </form>
         </iron-form>
 
@@ -127,7 +130,29 @@
         value: {}
    },
    storedForm: Object
-	}
+ },
+ name: {
+   type: String,
+   notify: true,
+ },
+ duration: {
+   type: String,
+   notify: true,
+ },
+ description: {
+   type: String,
+   notify: true,
+ },
+ postBody: {
+   type: String,
+   computed: 'getPostBody(name, duration, description)'
+ },
+ serverErrorObj: Object,
+ serverSuccessObj: Object,
+ ssoDisplay: {
+   type: String,
+   computed: 'getSso(serverSuccessObj)'
+ }
 }
 
  retrieveIndex(services)
@@ -169,20 +194,9 @@ this.storedForm = {
 
   _remove(services) {
     var index = this.retrieveIndex(services);
-    this.splice('services', index, 1);
+    this.splice('services', index, -1);
   }
-  computeFilter(string) {
-    if (!string) {
-      return null;
-    }
-    else {
-      string = string.toLowerCase();
-      return function(services) {
-        var name = services.name.toLowerCase();
-        return (first.indexOf(string) != -1);
-      };
-    }
-  }
+
   _presubmit(e) {
      const body = this.$.myForm.request.body;
     body['newkey'] = [1,2,3];
@@ -191,6 +205,27 @@ this.storedForm = {
 
   _submit() {
     this.$.myForm.submit();
+  }
+
+  sendData(event) {
+    this.$.registerFormAjax.generateRequest();
+  }
+
+  getPostBody(name, duration, description) {
+    return {
+      name: name,
+      duration: duration,
+      description: description
+    };
+  }
+
+  serverSuccessCb() {
+  }
+  serverErrorCb() {
+  }
+
+  getSso(serverSuccessObj) {
+    return JSON.stringify(serverSuccessObj);
   }
 
 }
