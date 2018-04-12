@@ -145,12 +145,12 @@
 
     formData: {
       type: Object,
-      value: {},
       notify: true
     },
 
     storedForm: {
       type: Object,
+      value: {},
       notify: true
     },
 
@@ -203,29 +203,9 @@ getSso(serverSuccessObj) {
    console.log(storedForm.duration);
    console.log(storedForm.description);
 
-  this.storedForm._push();
-
-
 }
 
- _push(serverSuccessObj) {
-   var json = JSON.stringify(serverSuccessObj);
-   var storedForm = JSON.parse(json);
-
-
-
-   this.storedForm = {
-    name: this.formData.name,
-    duration: this.formData.duration,
-    description: this.formData.description
-    };
-
-    console.log(storedForm.name);
-    console.log(storedForm.duration);
-    console.log(storedForm.description);
-
-
-
+ _push() {
    this.push('services', 'storedForm');
    this.notifyPath('services')
  }
