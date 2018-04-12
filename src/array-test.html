@@ -243,8 +243,8 @@ this.storedForm = {
  serverErrorCb() {
  }
  getSso(serverSuccessObj) {
-   return JSON.stringify(serverSuccessObj);
-   handleUserResponse(serverSuccessObj);
+   var json = JSON.stringify(serverSuccessObj);
+   handleUserResponse(json);
  }
 
 }
