@@ -31,18 +31,7 @@
     }
   </style>
 
-  <iron-ajax
-  url="https://jsonplaceholder.typicode.com/posts"
-  id="postExample"
-  handle-as="json"
-  content-type="application/json"
-  method="POST"
-  body='{{postBody}}'
-	on-response="serverSuccessCb"
-  last-response="{{serverSuccessObj}}"
-  on-error="serverErrorCb"
-  last-error="{{serverErrorObj}}">
-  </iron-ajax>
+
 
 
  <template>
@@ -97,13 +86,20 @@
     			<h3>serverErrorObj</h3>
     			{{serverErrorObj}}
     		</div>
-
-
-
-
-
-
       </div>
+
+      <iron-ajax
+      url="https://jsonplaceholder.typicode.com/posts"
+      id="postExample"
+      handle-as="json"
+      content-type="application/json"
+      method="POST"
+      body='{{postBody}}'
+      on-response="serverSuccessCb"
+      last-response="{{serverSuccessObj}}"
+      on-error="serverErrorCb"
+      last-error="{{serverErrorObj}}">
+      </iron-ajax>
 
   <div class="test">
   <paper-button style="background-color: green" raised on-tap="_push"></paper-button>
