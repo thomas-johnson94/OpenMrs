@@ -75,21 +75,21 @@
 					type: String,
 					computed: 'getSso(serverSuccessObj)'
 				}
-			},
+			}
 			sendData(event) {
 				this.$$('#postExample').generateRequest();
-			},
+			}
 			getPostBody(i1, i2, i3) {
 				return {
 					i1: i1,
 					i2: i2,
 					i3: i3
 				};
-			},
+			}
 			serverSuccessCb() {
-			},
+			}
 			serverErrorCb() {
-			},
+			}
 			getSso(serverSuccessObj) {
 				return JSON.stringify(serverSuccessObj);
 			}
