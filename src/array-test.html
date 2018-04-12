@@ -190,7 +190,7 @@ retrieveIndex(services)
 getSso(serverSuccessObj) {
   var json = JSON.stringify(serverSuccessObj);
   var storedForm = JSON.parse(json);
-  return JSON.stringify(serverSuccessObj);
+  return JSON.parse(json);
 
 
 
