@@ -143,10 +143,10 @@
 		  }
 		},
       formData: {
-        type: Object,
-        value: {}
+        type: String,
+        notify: true
    },
-   storedForm: Object,
+   storedForm: String,
 
    newName: {
      type: String,
@@ -226,7 +226,7 @@ this.storedForm = {
  }
  getPostBody(newName, duration, description) {
    return {
-     this.storedForm = {
+     this.$.storedForm = {
       newName: this.formData.name,
       duration: this.formData.duration,
       description: this.formData.description
