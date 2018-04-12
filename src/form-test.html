@@ -51,7 +51,7 @@
  	 class MyView1 extends Polymer.Element {
 		static get is() {return 'form-test';}
 
-    static get properties()
+    static get properties() {
       return {
 				myIp1: {
 					type: String,
@@ -76,6 +76,7 @@
 					computed: 'getSso(serverSuccessObj)'
 				}
 			}
+    }
 			sendData(event) {
 				this.$$('#postExample').generateRequest();
 			}
