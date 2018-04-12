@@ -187,21 +187,6 @@ retrieveIndex(services)
   }
 }
 
-_pushForm() {
- this.$.registerForm.generateRequest();
-}
-
-handleUserResponse(event) {
-var response = JSON.parse(event.detail.response);
-
-this.storedForm = {
- name: this.formData.name,
- duration: this.formData.duration,
- description: this.formData.description
- };
- this.$.storedForm._push();
-}
-
 getSso(serverSuccessObj) {
   var json = JSON.stringify(serverSuccessObj);
   var storedForm = JSON.parse(json);
@@ -209,9 +194,9 @@ getSso(serverSuccessObj) {
 
 
   this.storedForm = {
-   name: this.formData.name,
-   duration: this.formData.duration,
-   description: this.formData.description
+   name: name,
+   duration: duration,
+   description: description
    };
 
    console.log(storedForm.name);
