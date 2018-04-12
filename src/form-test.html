@@ -4,7 +4,7 @@
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 
-<dom-module id="my-ajax">
+<dom-module id="form-test">
 	<template>
 		<style include="shared-styles">
 			:host {
@@ -47,10 +47,12 @@
 		</iron-ajax>
 	</template>
 
-	<script>
-		Polymer({
-			is: 'my-ajax',
-			properties: {
+<script>
+ 	 class MyView1 extends Polymer.Element {
+		static get is() {return 'form-test';}
+
+    static get properties()
+      return {
 				myIp1: {
 					type: String,
 					notify: true,
@@ -74,23 +76,24 @@
 					computed: 'getSso(serverSuccessObj)'
 				}
 			},
-			sendData: function (event) {
+			sendData(event) {
 				this.$$('#postExample').generateRequest();
 			},
-			getPostBody: function (i1, i2, i3) {
+			getPostBody(i1, i2, i3) {
 				return {
 					i1: i1,
 					i2: i2,
 					i3: i3
 				};
 			},
-			serverSuccessCb: function () {
+			serverSuccessCb() {
 			},
-			serverErrorCb: function () {
+			serverErrorCb() {
 			},
-			getSso: function (serverSuccessObj) {
+			getSso(serverSuccessObj) {
 				return JSON.stringify(serverSuccessObj);
 			}
-		});
+		}
+      window.customElements.define(FormTest.is, FormTest);
 	</script>
 </dom-module>
