@@ -129,30 +129,32 @@
         type: Object,
         value: {}
    },
-   storedForm: Object
+   storedForm: Object,
+   
+   name: {
+     type: String,
+     notify: true,
+   },
+   duration: {
+     type: String,
+     notify: true,
+   },
+   description: {
+     type: String,
+     notify: true,
+   },
+   postBody: {
+     type: String,
+     computed: 'getPostBody(name, duration, description)'
+   },
+   serverErrorObj: Object,
+   serverSuccessObj: Object,
+   ssoDisplay: {
+     type: String,
+     computed: 'getSso(serverSuccessObj)'
+   }
  },
- name: {
-   type: String,
-   notify: true,
- },
- duration: {
-   type: String,
-   notify: true,
- },
- description: {
-   type: String,
-   notify: true,
- },
- postBody: {
-   type: String,
-   computed: 'getPostBody(name, duration, description)'
- },
- serverErrorObj: Object,
- serverSuccessObj: Object,
- ssoDisplay: {
-   type: String,
-   computed: 'getSso(serverSuccessObj)'
- }
+
 }
 
  retrieveIndex(services)
