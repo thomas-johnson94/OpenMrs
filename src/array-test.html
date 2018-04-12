@@ -142,11 +142,6 @@
 
 		  }
 		},
-      formData: {
-        type: String,
-        notify: true
-   },
-   storedForm: String,
 
    newName: {
      type: String,
@@ -226,13 +221,12 @@ this.storedForm = {
  }
  getPostBody(newName, duration, description) {
    return {
-     this.$.storedForm = {
-      newName: this.formData.name,
-      duration: this.formData.duration,
-      description: this.formData.description
+      newName: this.postBody.name,
+      duration: this.postBody.duration,
+      description: this.postBody.description
       };
  }
-}
+ 
  serverSuccessCb() {
  }
  serverErrorCb() {
