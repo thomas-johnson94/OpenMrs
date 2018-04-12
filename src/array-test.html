@@ -226,11 +226,13 @@ this.storedForm = {
  }
  getPostBody(newName, duration, description) {
    return {
-     newName: newName,
-     duration: duration,
-     description: description
-   };
+     this.storedForm = {
+      newName: this.formData.name,
+      duration: this.formData.duration,
+      description: this.formData.description
+      };
  }
+}
  serverSuccessCb() {
  }
  serverErrorCb() {
