@@ -202,6 +202,14 @@ this.storedForm = {
  this.$.storedForm._push();
 }
 
+getSso(serverSuccessObj) {
+  var json = JSON.stringify(serverSuccessObj);
+  var storedForm = JSON.parse(json);
+  return storedForm;
+
+
+}
+
  _push() {
    this.push('services', 'storedForm');
    this.notifyPath('services')
@@ -214,16 +222,6 @@ this.storedForm = {
  _remove(services) {
    var index = this.retrieveIndex(services);
    this.splice('services', index, -1);
- }
-
- _presubmit(e) {
-     const body = this.$.myForm.request.body;
-   body['newkey'] = [1,2,3];
-   console.log('presubmit body', body);
- }
-
- _submit() {
-   this.$.myForm.submit();
  }
 
 
@@ -242,11 +240,7 @@ this.storedForm = {
  }
  serverErrorCb() {
  }
- getSso(serverSuccessObj) {
-   var json = JSON.stringify(serverSuccessObj);
-   return JSON.stringify(serverSuccessObj);
-   handleUserResponse(json);
- }
+
 
 }
 
