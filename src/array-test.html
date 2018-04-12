@@ -71,7 +71,7 @@
       <div class="box2 flex">
         <h1>Service Type</h1>
         <div>
-    			<paper-input value="{{newName}}" label="Name"></paper-input>
+    			<paper-input value="{{name}}" label="Name"></paper-input>
     			<paper-input value="{{duration}}" label="Duration (Min)"></paper-input>
     			<paper-input value="{{description}}" label="Description (Optional)"></paper-input>
     		</div>
@@ -143,7 +143,7 @@
 		  }
 		},
 
-   newName: {
+   name: {
      type: String,
      notify: true,
    },
@@ -219,14 +219,14 @@ this.storedForm = {
  sendData(event) {
    this.$.postExample.generateRequest();
  }
- getPostBody(newName, duration, description) {
+ getPostBody(name, duration, description) {
    return {
-      newName: this.postBody.name,
+      name: this.postBody.name,
       duration: this.postBody.duration,
       description: this.postBody.description
       };
  }
- 
+
  serverSuccessCb() {
  }
  serverErrorCb() {
