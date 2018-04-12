@@ -67,17 +67,25 @@
 
       </vaadin-grid>
 
-<iron-localstorage name="form-storage" value="{{storedForm}}"></iron-localstorage>
+
       <div class="box2 flex">
         <h1>Service Type</h1>
-        <iron-form id="myForm" on-iron-form-presubmit="_presubmit">
-
-                <paper-input name="name" label="name"></paper-input>
-                <paper-input name="duration" label="duration"></paper-input>
-                <paper-input name="description" label="Description(optional)"></paper-input>
-            <paper-button on-tap="sendData">Submit</paper-button>
-          </form>
-        </iron-form>
+        <div>
+    			<paper-input value="{{name}}" label="Name"></paper-input>
+    			<paper-input value="{{duration}}" label="Duration (Min)"></paper-input>
+    			<paper-input value="{{description}}" label="Description (Optional)"></paper-input>
+    		</div>
+    		<div class="mt-20">
+    			<paper-button raised on-tap="sendData">POST REQUEST</paper-button>
+    		</div>
+    		<div>
+    			<h3>serverSuccessObj</h3>
+    			{{ssoDisplay}}
+    		</div>
+    		<div>
+    			<h3>serverErrorObj</h3>
+    			{{serverErrorObj}}
+    		</div>
 
 
 
