@@ -206,15 +206,17 @@ getSso(serverSuccessObj) {
   var json = JSON.stringify(serverSuccessObj);
   var storedForm = JSON.parse(json);
 
-  console.log(storedForm.name);
-  console.log(storedForm.duration);
-  console.log(storedForm.description);
+
 
   this.storedForm = {
    name: this.formData.name,
    duration: this.formData.duration,
    description: this.formData.description
    };
+
+   console.log(storedForm.name);
+   console.log(storedForm.duration);
+   console.log(storedForm.description);
 
   return storedForm;
 
