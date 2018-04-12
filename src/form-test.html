@@ -16,9 +16,9 @@
 			}
 		</style>
 		<div>
-			<paper-input value="{{myIp1}}" label="input 1"></paper-input>
-			<paper-input value="{{myIp2}}" label="input 2"></paper-input>
-			<paper-input value="{{myIp3}}" label="input 3"></paper-input>
+			<paper-input value="{{name}}" label="Name"></paper-input>
+			<paper-input value="{{duration}}" label="Duration (Min)"></paper-input>
+			<paper-input value="{{description}}" label="Description (Optional)"></paper-input>
 		</div>
 		<div class="mt-20">
 			<paper-button raised on-tap="sendData">POST REQUEST</paper-button>
@@ -53,21 +53,21 @@
 
     static get properties() {
       return {
-				myIp1: {
+				name: {
 					type: String,
 					notify: true,
 				},
-				myIp2: {
+				duration: {
 					type: String,
 					notify: true,
 				},
-				myIp3: {
+				description: {
 					type: String,
 					notify: true,
 				},
 				postBody: {
 					type: String,
-					computed: 'getPostBody(myIp1, myIp2, myIp3)'
+					computed: 'getPostBody(name, duration, description)'
 				},
 				serverErrorObj: Object,
 				serverSuccessObj: Object,
@@ -82,9 +82,9 @@
 			}
 			getPostBody(i1, i2, i3) {
 				return {
-					i1: i1,
-					i2: i2,
-					i3: i3
+					name: name,
+					duration: duration,
+					description: description
 				};
 			}
 			serverSuccessCb() {
