@@ -151,7 +151,6 @@
 
     storedForm: {
       type: Object,
-      value: {},
       notify: true
     },
 
@@ -195,9 +194,9 @@ getSso(serverSuccessObj) {
 
 
   this.storedForm = {
-   name: this.name,
-   duration: this.duration,
-   description: this.description
+    name: this.formData.name,
+    duration: this.formData.duration,
+    description: this.formData.description
    };
 
    console.log(storedForm.name);
@@ -227,7 +226,7 @@ getSso(serverSuccessObj) {
 
 
 
-   this.storedForm.push('services', 'storedForm');
+   this.push('services', 'storedForm');
    this.notifyPath('services')
  }
 
