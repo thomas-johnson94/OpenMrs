@@ -177,6 +177,54 @@
  }
 }
 
+retrieveIndex(services)
+{
+  for(var i=0; i < services.length; i++)
+  {
+    this.services[i].index = i;
+  }
+}
+
+_pushForm() {
+ this.$.registerForm.generateRequest();
+}
+
+handleUserResponse(event) {
+var response = JSON.parse(event.detail.response);
+
+this.storedForm = {
+ name: this.formData.name,
+ duration: this.formData.duration,
+ description: this.formData.description
+ };
+ this._push();
+}
+
+ _push() {
+   this.push('services', 'storedForm');
+   this.notifyPath('services')
+ }
+
+ _sort() {
+   this.services.name.sort();
+ }
+
+ _remove(services) {
+   var index = this.retrieveIndex(services);
+   this.splice('services', index, -1);
+ }
+
+ _presubmit(e) {
+     const body = this.$.myForm.request.body;
+   body['newkey'] = [1,2,3];
+   console.log('presubmit body', body);
+ }
+
+ _submit() {
+   this.$.myForm.submit();
+ }
+
+
  sendData(event) {
    this.$.postExample.generateRequest();
  }
@@ -194,8 +242,8 @@
  getSso(serverSuccessObj) {
    return JSON.stringify(serverSuccessObj);
  }
-}
 
+}
 
 
 
