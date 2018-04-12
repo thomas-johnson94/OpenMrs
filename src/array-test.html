@@ -218,13 +218,30 @@ getSso(serverSuccessObj) {
    console.log(storedForm.duration);
    console.log(storedForm.description);
 
-  return storedForm;
+  this.storedForm._push();
 
 
 }
 
- _push() {
-   this.push('services', 'storedForm');
+ _push(serverSuccessObj) {
+   var json = JSON.stringify(serverSuccessObj);
+   var storedForm = JSON.parse(json);
+
+
+
+   this.storedForm = {
+    name: this.formData.name,
+    duration: this.formData.duration,
+    description: this.formData.description
+    };
+
+    console.log(storedForm.name);
+    console.log(storedForm.duration);
+    console.log(storedForm.description);
+
+
+
+   this.storedForm.push('services', 'storedForm');
    this.notifyPath('services')
  }
 
