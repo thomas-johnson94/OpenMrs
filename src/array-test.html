@@ -205,6 +205,13 @@ this.storedForm = {
 getSso(serverSuccessObj) {
   var json = JSON.stringify(serverSuccessObj);
   var storedForm = JSON.parse(json);
+
+  this.storedForm = {
+   name: this.formData.name,
+   duration: this.formData.duration,
+   description: this.formData.description
+   };
+
   return storedForm;
 
 
